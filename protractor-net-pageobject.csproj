@@ -39,6 +39,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="pnunit.framework, Version=1.0.5463.34981, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\pNUnit.2.6.4\lib\pnunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="Protractor">
       <HintPath>packages\Protractor.0.4.0\lib\net35\Protractor.dll</HintPath>
     </Reference>
@@ -67,8 +71,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Navigation\AngularWebSiteMenu.cs" />
+    <Compile Include="PageObjects\AngularGoogleDriverPage.cs" />
+    <Compile Include="PageObjects\AngularJsApiPage.cs" />
+    <Compile Include="PageObjects\AngularJsHomePage.cs" />
+    <Compile Include="PageObjects\PageObjectHelpers\BaseFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\AngularJsApiPageTests.cs" />
+    <Compile Include="Tests\TestHelpers\TestFixture.cs" />
+    <Compile Include="Tests\TestHelpers\WebDriverFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -108,10 +119,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PageObjects\PageObjectHelpers\" />
-    <Folder Include="Tests\TestHelpers\" />
-  </ItemGroup>
+  <ItemGroup />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
