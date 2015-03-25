@@ -1,36 +1,37 @@
-﻿using NUnit.Framework;
+﻿using Protractor;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.PhantomJS;
-using Protractor;
 
 namespace protractor_net_pageobject.Tests.TestHelpers
 {
     /// <summary>
-    /// A static factory class for creating WebDriver instances with proxies.
+    /// A static factory object for creating WebDriver instances with/without proxies.
     /// </summary>
     public class WebDriverFactory
     {
-        public NgWebDriver NgWebDriver;
+        public IWebDriver Driver;
+        public NgWebDriver NgDriver;
 
         protected WebDriverFactory(BrowserType type, Proxy proxy)
         {
-            var webDriver = CreateWebDriverWithProxy(type,proxy );
-            NgWebDriver = new NgWebDriver(webDriver);
+            Driver = WebDriver(type, proxy);
+            NgDriver = new NgWebDriver(Driver);
         }
 
         protected WebDriverFactory(BrowserType type)
         {
-            var webDriver = CreateWebDriverWithProxy(type);
-            NgWebDriver = new NgWebDriver(webDriver);
+            Driver = WebDriver(type);
+            NgDriver = new NgWebDriver(Driver);
         }
 
         [TestFixtureTearDown]
         public void TestFixtureTearnDown()
         {
-            NgWebDriver.Quit();
+            Driver.Quit();
         }
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace protractor_net_pageobject.Tests.TestHelpers
             PhantomJS
         }
 
-        public static IWebDriver CreateWebDriverWithProxy(BrowserType type, Proxy proxy = null)
+        public static IWebDriver WebDriver(BrowserType type, Proxy proxy = null)
         {
             IWebDriver driver = null;
 
@@ -67,6 +68,11 @@ namespace protractor_net_pageobject.Tests.TestHelpers
             return driver;
         }
 
+        /// <summary>
+        /// Creates Internet Explorer Driver instance.
+        /// </summary>
+        /// <param name="proxy">The proxy.</param>
+        /// <returns>A new instance of IEDriverServer</returns>
         private static IWebDriver IeDriver(Proxy proxy)
         {
             InternetExplorerOptions options = new InternetExplorerOptions();
@@ -80,6 +86,11 @@ namespace protractor_net_pageobject.Tests.TestHelpers
             return driver;
         }
 
+        /// <summary>
+        /// Creates Firefox Driver instance.
+        /// </summary>
+        /// <param name="proxy">The proxy.</param>
+        /// <returns>A new instance of Firefox Driver</returns>
         private static IWebDriver FirefoxDriver(Proxy proxy)
         {
             FirefoxProfile profile = new FirefoxProfile();
@@ -90,7 +101,13 @@ namespace protractor_net_pageobject.Tests.TestHelpers
             IWebDriver driver = new FirefoxDriver(profile);
             return driver;
         }
-        
+
+
+        /// <summary>
+        /// Creates Chrome Driver instance.
+        /// </summary>
+        /// <param name="proxy">The proxy.</param>
+        /// <returns>A new instance of Chrome Driver</returns>
         private static IWebDriver ChromeDriver(Proxy proxy)
         {
             ChromeOptions chromeOptions = new ChromeOptions();
@@ -101,7 +118,12 @@ namespace protractor_net_pageobject.Tests.TestHelpers
             IWebDriver driver = new ChromeDriver(chromeOptions);
             return driver;
         }
-        
+
+        /// <summary>
+        /// Creates PhantomJs Driver instance..
+        /// </summary>
+        /// <param name="proxy">The proxy.</param>
+        /// <returns>A new instance of PhantomJs</returns>
         private static IWebDriver PhanthomJsDriver(Proxy proxy)
         {
             PhantomJSDriverService service = PhantomJSDriverService.CreateDefaultService();

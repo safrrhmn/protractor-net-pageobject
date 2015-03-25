@@ -1,0 +1,9 @@
+# see http://docs.travis-ci.com/user/languages/csharp/language: csharp
+language: csharp
+solution: solution-name.sln
+install:
+  - sudo apt-get install mono-devel mono-gmcs nunit-console libfbembed2.5
+  
+script:
+  - xbuild build.xml
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe bin/Release/protractor-net-pageobject.dll

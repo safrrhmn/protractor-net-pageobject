@@ -6,24 +6,26 @@ using Protractor;
 namespace protractor_net_pageobject.PageObjects.PageObjectHelpers
 {
     /// <summary>
-    /// Page Object helper methods.
+    /// Page Object containing helper methods.
     /// Contains all the generic functionalities.
     /// </summary>
     public class BaseFactory
     {
-        private const string Url = "https://angularjs.org/";
         private readonly TimeSpan _pageLoadTimeOut = new TimeSpan(10);
-
         public IWebDriver Driver { get; set; }
         public NgWebDriver NgDriver { get; set; }
 
-        public BaseFactory(IWebDriver driver)
+        public BaseFactory(IWebDriver driver, string url = "")
         {
             Driver = driver;
-            Driver.Navigate().GoToUrl(Url);
+            NgDriver = new NgWebDriver(driver);   
+            if (!String.IsNullOrEmpty(url))
+            {
+                Driver.Navigate().GoToUrl(url);   
+            }
             Driver.Manage().Timeouts().SetPageLoadTimeout(_pageLoadTimeOut);
             Driver.Manage().Window.Maximize();
-            PageFactory.InitElements(Driver,this);
+            PageFactory.InitElements(driver, this);
         }
     }
 }
