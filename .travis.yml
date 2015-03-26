@@ -1,9 +1,9 @@
-# see http://docs.travis-ci.com/user/languages/csharp/language: csharp
+# see http://docs.travis-ci.com/user/languages/csharp/
 language: csharp
-solution: solution-name.sln
+solution: protractor-net-pageobject.sln
 install:
-  - sudo apt-get install mono-devel mono-gmcs nunit-console libfbembed2.5
-  
+- travis_retry nuget restore protractor-net-pageobject.sln
+- travis_retry nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 script:
-  - xbuild build.xml
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe bin/Release/protractor-net-pageobject.dll
+- xbuild build.xml
+- mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./bin/Release/protractor-net-pageobject.dll
