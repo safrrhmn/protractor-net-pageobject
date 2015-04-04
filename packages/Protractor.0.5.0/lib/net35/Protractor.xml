@@ -23,6 +23,13 @@
             <param name="model">The model name.</param>
             <returns>A <see cref="T:OpenQA.Selenium.By"/> object the driver can use to find the elements.</returns>
         </member>
+        <member name="M:Protractor.NgBy.Model(System.String)">
+            <summary>
+            Gets a mechanism to find elements by their model name.
+            </summary>
+            <param name="model"></param>
+            <returns>A <see cref="T:OpenQA.Selenium.By"/> object the driver can use to find the elements.</returns>
+        </member>
         <member name="M:Protractor.NgBy.TextArea(System.String)">
             <summary>
             Gets a mechanism to find textarea elements by their model name.
@@ -278,21 +285,13 @@
             
              @return {Array.WebElement} The elements containing the binding.
         </member>
-        <member name="F:Protractor.ClientSideScripts.FindInputs">
-             Find input elements by model name.
+        <member name="F:Protractor.ClientSideScripts.FindModel">
+             Find elements by model name.
             
              arguments[0] {Element} The scope of the search.
              arguments[1] {string} The model name.
             
              @return {Array.WebElement} The matching input elements.
-        </member>
-        <member name="F:Protractor.ClientSideScripts.FindSelects">
-             Find multiple select elements by model name.
-            
-             arguments[0] {Element} The scope of the search.
-             arguments[1] {string} The model name.
-            
-             @return {Array.WebElement} The matching select elements.
         </member>
         <member name="F:Protractor.ClientSideScripts.FindSelectedOptions">
              Find selected option elements by model name.
@@ -301,14 +300,6 @@
              arguments[1] {string} The model name.
             
              @return {Array.WebElement} The matching select elements.
-        </member>
-        <member name="F:Protractor.ClientSideScripts.FindTextArea">
-             Find textarea elements by model name.
-            
-             arguments[0] {Element} The scope of the search.
-             arguments[1] {String} The model name.
-            
-             @return {Array.WebElement} The matching textarea elements.
         </member>
         <member name="F:Protractor.ClientSideScripts.FindAllRepeaterRows">
              Find all rows of an ng-repeat.
