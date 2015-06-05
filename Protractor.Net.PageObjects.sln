@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "protractor-net-pageobject", "protractor-net-pageobject.csproj", "{AF17BF3A-B999-4471-9A14-8B9054814C88}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Protractor.Net.TestUI", "Protractor.Net.TestUI.csproj", "{AF17BF3A-B999-4471-9A14-8B9054814C88}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{EADD66D5-3F9D-4CC6-B7BD-735CD57EB384}"
 	ProjectSection(SolutionItems) = preProject
