@@ -1,1 +1,0 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/q061pbom56ik2dvg?svg=true)](https://ci.appveyor.com/project/safrrhmn/protractor-net-pageobject)
