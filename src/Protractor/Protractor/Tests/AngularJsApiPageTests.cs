@@ -4,7 +4,7 @@ using Protractor.PageObjects;
 
 namespace Protractor.Tests
 {
-    [TestFixture(BrowserType.PhantomJS)]
+    [TestFixture(BrowserType.Chrome)]
     public class AngularJsApiPageTests : WebDriverFactory
     {
         public AngularJsApiPageTests(BrowserType type) 
